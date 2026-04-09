@@ -1,1 +1,1 @@
-puclic 
+public
