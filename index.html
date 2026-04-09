@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Pyrolysis Dashboard - Đà Nẵng</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 1 DIV CHÍNH BỌC TẤT CẢ -->
+    <div class="dashboard">
+        
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logos">
+                <img src="BKDN.jpg" alt="Logo" class="logo" onerror="this.src='https://placehold.co/35x35?text=BK'">
+                <img src="Đà nẵng.png" alt="Logo" class="logo" onerror="this.src='https://placehold.co/35x35?text=DN'">
+                <img src="ĐHDN.png" alt="Logo" class="logo" onerror="this.src='https://placehold.co/35x35?text=UD'">
+            </div>
+            <h1>🌿 Pyrolysis Prediction Dashboard</h1>
+            <p>Waste Tires + Microalgae → Clean Energy | R² ≈ 0.988</p>
+        </div>
+
+        <!-- MAIN CONTENT - 3 CỘT -->
+        <div class="main-content">
+            
+            <!-- CỘT 1 -->
+            <div class="col">
+                <!-- Model Performance -->
+                <div class="card">
+                    <div class="card-header">📊 MODEL PERFORMANCE</div>
+                    <canvas id="r2Chart"></canvas>
+                    <div class="note">XGBoost & Extra Trees: R² ≈ 0.988</div>
+                </div>
+
+                <!-- Parameters -->
+                <div class="card">
+                    <div class="card-header">🔧 PARAMETERS</div>
+                    <div class="control">
+                        <label>KOH (g)</label>
+                        <select id="catalyst"><option value="1">1</option><option value="2" selected>2</option></select>
+                    </div>
+                    <div class="control">
+                        <label>Power (W)</label>
+                        <select id="power"><option value="300">300</option><option value="450" selected>450</option><option value="600">600</option></select>
+                    </div>
+                    <div class="control">
+                        <label>Graphite (g)</label>
+                        <select id="susceptor"><option value="5">5</option><option value="10">10</option><option value="15" selected>15</option></select>
+                    </div>
+                    <button class="btn" onclick="predict()">🔮 PREDICT</button>
+                </div>
+
+                <!-- Environmental -->
+                <div class="card">
+                    <div class="card-header">🌍 ENVIRONMENTAL</div>
+                    <div class="stats-2">
+                        <div class="stat"><span class="big" id="tiresProcessed">1,250</span><span>Tons tires</span></div>
+                        <div class="stat"><span class="big" id="co2Reduced">120k</span><span>kg CO₂</span></div>
+                        <div class="stat"><span class="big" id="oilProduced">45k</span><span>L bio-oil</span></div>
+                        <div class="stat"><span class="big" id="treesEquivalent">5.4k</span><span>🌳 Trees</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CỘT 2 -->
+            <div class="col">
+                <!-- Result -->
+                <div class="card result-card">
+                    <div class="card-header">📈 PREDICTION</div>
+                    <canvas id="gaugeChart"></canvas>
+                    <div class="yield" id="oilYield">--</div>
+                    <div class="eval" id="evaluation">--</div>
+                    <div class="tip" id="optimalNote"></div>
+                </div>
+
+                <!-- Specifications -->
+                <div class="card">
+                    <div class="card-header">🛢️ SPECIFICATIONS</div>
+                    <div class="specs-3">
+                        <div class="spec"><span>HHV</span><b id="hhv">40.2</b><small>MJ/kg</small></div>
+                        <div class="spec"><span>Viscosity</span><b id="cvOil">8.08</b><small>cP</small></div>
+                        <div class="spec"><span>Biochar</span><b id="biochar">14.9</b><small>wt%</small></div>
+                        <div class="spec"><span>N</span><b class="green">↓</b></div>
+                        <div class="spec"><span>O</span><b class="green">↓</b></div>
+                        <div class="spec"><span>S</span><b class="green">↓</b></div>
+                    </div>
+                </div>
+
+                <!-- Economic -->
+                <div class="card">
+                    <div class="card-header">💰 ECONOMIC</div>
+                    <div class="stats-2">
+                        <div class="stat"><span class="big" id="revenue">850</span><span>M VND rev</span></div>
+                        <div class="stat"><span class="big" id="cost">520</span><span>M VND cost</span></div>
+                        <div class="stat"><span class="big" id="profit">330</span><span>M VND profit</span></div>
+                        <div class="stat"><span class="big" id="jobs">38</span><span>Jobs</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CỘT 3 -->
+            <div class="col">
+                <!-- Comparison -->
+                <div class="card">
+                    <div class="card-header">⚖️ COMPARISON</div>
+                    <div class="compare">
+                        <div class="bad"><b>❌ Burning</b><br>CO₂: HIGH<br>Toxic: Dioxin</div>
+                        <div class="good"><b>✅ Pyrolysis</b><br>CO₂: -120k kg<br>Toxic: MIN</div>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <div class="card map-card">
+                    <div class="card-header">📍 MAP - ĐÀ NẴNG</div>
+                    <div id="daNangMap"></div>
+                    <div class="campaign">🌱 5 lốp = 1 cây xanh | 06-12/2026</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            🎯 Optimal: 300W - 2g KOH - 15g → 50.46% | 🌱 Net Zero 2050
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

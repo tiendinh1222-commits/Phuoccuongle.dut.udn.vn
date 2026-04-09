@@ -1,0 +1,550 @@
+/* ========== 1. RESET - XÓA VIỀN TRẮNG ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    /* ===== ĐỔI NỀN XANH ĐẬM THÀNH VÀNG CAM ===== */
+    background: linear-gradient(135deg, #e65100 0%, #ff8f00 50%, #ffb300 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ========== 2. DASHBOARD ========== */
+.dashboard {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== HEADER ========== */
+.header {
+    background: linear-gradient(135deg, #ffffff, #f8fff8);
+    border-radius: 18px;
+    padding: 14px 30px;
+    margin-bottom: 16px;
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.15);
+    flex-shrink: 0;
+}
+
+.logos {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 6px;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    border-radius: 50%;
+    background: white;
+    padding: 4px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    color: #1a5f2a;
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.header p {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ========== MAIN CONTENT - GRID 3 CỘT ========== */
+.main-content {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr 1.2fr;
+    gap: 16px;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    align-items: stretch;
+}
+
+/* ========== CỘT - TẤT CẢ ĐỀU DÙNG FLEX ========== */
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    min-height: 0;
+    width: 100%;
+}
+
+/* ========== CARD CHUNG ========== */
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 16px 18px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.12);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: visible;
+}
+
+.card-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    border-bottom: 3px solid #4caf50 !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 14px !important;
+    font-weight: 800 !important;
+    color: #1a5f2a !important;
+    font-size: 1rem !important;
+    text-transform: uppercase !important;
+    flex-shrink: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* ========== MODEL PERFORMANCE CARD - NỔI BẬT ========== */
+.col:first-child .card:first-child {
+    flex-shrink: 0;
+    min-height: 290px !important;
+    padding: 18px 18px 25px 18px !important;
+    border: 2.5px solid #2e7d32 !important;
+    box-shadow: 0 6px 18px rgba(46, 125, 50, 0.25) !important;
+    background: linear-gradient(135deg, #ffffff, #f0fff0) !important;
+    overflow: visible !important;
+}
+
+.col:first-child .card:first-child .card-header {
+    font-size: 1.1rem !important;
+    font-weight: 800 !important;
+    color: #1a5f2a !important;
+    border-bottom: 3px solid #2e7d32 !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 15px !important;
+}
+
+/* ========== CỘT 1 - ENVIRONMENTAL KÉO DÀI XUỐNG ĐÁY ========== */
+.col:first-child {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.col:first-child .card:nth-child(2) {
+    flex-shrink: 0;
+}
+
+.col:first-child .card:last-child {
+    flex: 1;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+}
+
+.col:first-child .card:last-child .stats-2 {
+    height: 100%;
+    align-content: center;
+}
+
+/* ========== CỘT 2 - ECONOMIC KÉO DÀI XUỐNG ĐÁY ========== */
+.col:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.col:nth-child(2) .card:first-child {
+    flex-shrink: 0;
+    min-height: 250px;
+}
+
+.col:nth-child(2) .card:nth-child(2) {
+    flex-shrink: 0;
+    min-height: 190px;
+}
+
+.col:nth-child(2) .card:last-child {
+    flex: 1;
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+}
+
+.col:nth-child(2) .card:last-child .stats-2 {
+    height: 100%;
+    align-content: center;
+}
+
+/* ========== CỘT 3 - MAP KÉO DÀI XUỐNG ĐÁY ========== */
+.col:last-child {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.col:last-child .card:first-child {
+    flex-shrink: 0;
+    min-height: 150px;
+}
+
+.col:last-child .map-card {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#daNangMap {
+    width: 100%;
+    flex: 1;
+    min-height: 150px;
+    border-radius: 12px;
+    z-index: 1;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.campaign {
+    background: #fff3e0;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 12px;
+    font-weight: 700;
+    color: #e65100;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+/* ========== CHART ========== */
+#r2Chart {
+    height: 170px !important;
+    width: 100% !important;
+    flex-shrink: 0;
+    display: block !important;
+    margin-bottom: 5px !important;
+}
+
+#gaugeChart {
+    height: 100px !important;
+    width: 160px !important;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+
+canvas {
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    max-width: 100% !important;
+}
+
+.note, .chart-note {
+    font-size: 0.85rem;
+    color: #1a5f2a;
+    text-align: center;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-radius: 30px;
+    font-weight: 700;
+    border: 1.5px solid #4caf50;
+}
+
+/* ========== CONTROLS ========== */
+.control {
+    margin-bottom: 14px;
+    width: 100%;
+}
+
+.control label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    display: block;
+    color: #1a5f2a;
+}
+
+.control select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    background: white;
+}
+
+.btn {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 14px rgba(76, 175, 80, 0.3);
+}
+
+/* ========== RESULT CARD ========== */
+.result-card {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    text-align: center;
+}
+
+.yield {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #1b5e20;
+    line-height: 1.1;
+}
+
+.eval {
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 40px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-top: 6px;
+    color: white;
+}
+
+.eval.excellent { background: #2e7d32; }
+.eval.good { background: #2196f3; }
+.eval.poor { background: #ff9800; }
+.eval.bad { background: #f44336; }
+
+.tip {
+    background: #2e7d32;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* ========== STATS 2 CỘT ========== */
+.stats-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+}
+
+.stat {
+    background: linear-gradient(135deg, #f8faf8, #f0f4f0);
+    padding: 14px 8px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(76, 175, 80, 0.15);
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat .big {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #1a5f2a;
+    display: block;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stat span:last-child {
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ========== SPECS 3 CỘT ========== */
+.specs-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+}
+
+.spec {
+    background: linear-gradient(135deg, #f8faf8, #f0f4f0);
+    padding: 10px 6px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(76, 175, 80, 0.15);
+    min-width: 0;
+    overflow: hidden;
+}
+
+.spec span {
+    font-size: 0.75rem;
+    color: #555;
+    display: block;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spec b {
+    font-size: 1.2rem;
+    color: #1a5f2a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spec small {
+    font-size: 0.6rem;
+    color: #888;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.green {
+    color: #2e7d32 !important;
+    font-size: 1rem !important;
+}
+
+/* ========== COMPARISON ========== */
+.compare {
+    display: flex;
+    gap: 14px;
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+}
+
+.bad, .good {
+    flex: 1;
+    padding: 14px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bad {
+    background: #fff5f5;
+    border-left: 5px solid #f44336;
+}
+
+.good {
+    background: #f1f8e9;
+    border-left: 5px solid #4caf50;
+}
+
+.bad b, .good b {
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 14px;
+    padding: 10px 30px;
+    margin-top: 16px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1a5f2a;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1400px) {
+    .dashboard {
+        padding: 12px;
+    }
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    .header p {
+        font-size: 0.75rem;
+    }
+    #r2Chart {
+        height: 140px !important;
+    }
+    #gaugeChart {
+        height: 80px !important;
+        width: 140px !important;
+    }
+    .yield {
+        font-size: 2.2rem;
+    }
+    .stat .big {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        overflow-y: auto;
+    }
+    .col {
+        height: auto;
+    }
+    .col:first-child .card:last-child,
+    .col:nth-child(2) .card:last-child {
+        flex: auto;
+        min-height: 150px;
+    }
+    .map-card {
+        min-height: 300px;
+    }
+    #daNangMap {
+        min-height: 250px;
+    }
+}
